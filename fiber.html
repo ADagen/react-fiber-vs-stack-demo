@@ -17,8 +17,8 @@
         If you checked out the source from GitHub make sure to run <code>grunt</code>.
       </p>
     </div>
-    <script src="js/react.js"></script>
-    <script src="js/react-dom-fiber.js"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
     <script type="text/babel">
       var dotStyle = {
@@ -133,9 +133,7 @@
           this.intervalID = setInterval(this.tick, 1000);
         }
         tick() {
-          ReactDOMFiber.unstable_deferredUpdates(() =>
-            this.setState(state => ({ seconds: (state.seconds % 10) + 1 }))
-          );
+          this.setState(state => ({ seconds: (state.seconds % 10) + 1 }))
         }
         componentWillUnmount() {
           clearInterval(this.intervalID);
@@ -160,7 +158,7 @@
 
       var start = new Date().getTime();
       function update() {
-        ReactDOMFiber.render(
+        ReactDOM.render(
           <ExampleApplication elapsed={new Date().getTime() - start} />,
           document.getElementById('container')
         );
